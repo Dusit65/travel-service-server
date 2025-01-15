@@ -2,10 +2,10 @@
 //This file works with traveller_tb
 
 const Sequelize = require("sequelize");
-const sequelize = require("./../db/db.js");
+const db = require("./../db/db.js");
 
 //create model to map with table in database
-const Traveller = sequelize.define("traveller_tb", 
+const Traveller = db.define("traveller_tb", 
 {
     travellerId:{
         type: Sequelize.INTEGER,
