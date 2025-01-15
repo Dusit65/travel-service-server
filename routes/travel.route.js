@@ -1,12 +1,12 @@
-//ไฟล์นี้ใช้ในการจัดการเส้นทางในการเรียกใช้งาน service / api
-//ไฟล์นี้ทำงานกับ travel_tb
+//This file is used to manage routing for service / API calls
+//This file works with travel_tb
 const travelCtrl = require("./../controllers/travel.controller.js");
 
 //call express to use router module
 const express = require("express");
 const router = express.Router();
 
-//ในการกำหนดเส้นทางเป็นไปตามหลักการขอบ REST APT
+//Routing is based on RESTful API principles
 //GET = ค้นหา ตรวจสอบ ดึง ดู, POST = เพิ่ม, PUT = แก้ไข, DELETE = ลบ
 router.post("/", travelCtrl.createTravel);
 router.get("/:travellerId", travelCtrl.getAllTravel);

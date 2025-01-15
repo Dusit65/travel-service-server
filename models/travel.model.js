@@ -1,12 +1,11 @@
-//ไฟล้ที่ทำงานหรือตรงกับตารางในฐานข้อมูล
-//ไฟล์นี้ทำงานกับ travel_tb
+//File that works with a table in the database
+//This file works with travel_tb
 
-const { Sequelize, DataTypes } = require("sequelize");
-const db = require("../db/db");
-const sequelize = require("../db/db");
+const Sequelize = require("sequelize");
+const sequelize = require("./../db/db.js");
 
 //create model to map with table in database
-const Traveller = sequelize.define("travel_tb", {
+const Travel = sequelize.define("travel_tb", {
     
     travelId:{
         type: Sequelize.INTEGER,
@@ -50,4 +49,4 @@ const Traveller = sequelize.define("travel_tb", {
 });
 
 //export model for call to use
-module.exports = Traveller;
+module.exports = Travel;

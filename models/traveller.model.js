@@ -1,9 +1,8 @@
-//ไฟล้ที่ทำงานหรือตรงกับตารางในฐานข้อมูล
-//ไฟล์นี้ทำงานกับ traveller_tb
+//File that works with a table in the database
+//This file works with traveller_tb
 
-const { Sequelize, DataTypes } = require("sequelize");
-const db = require("../db/db");
-const sequelize = require("../db/db");
+const Sequelize = require("sequelize");
+const sequelize = require("./../db/db.js");
 
 //create model to map with table in database
 const Traveller = sequelize.define("traveller_tb", 
@@ -13,7 +12,7 @@ const Traveller = sequelize.define("traveller_tb",
         autoIncrement: true,
         allowNull: false,
         primaryKey: true,
-        field: "traveller_id"
+        field: "travellerId"
     },
     travellerFullname: {
         type: Sequelize.STRING(50),

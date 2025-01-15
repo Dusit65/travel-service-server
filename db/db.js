@@ -4,7 +4,7 @@ const { Sequelize } = require("sequelize");
 //call to use .env
 require("dotenv").config();
 
-//สร้าง innstance ในการติดต่อกับฐานข้อมูลด้วย sequelize
+//Create an instance to connect to the database with Sequelize
 const sequelize = new Sequelize(
     process.env.DB_NAME,
     process.env.DB_USER,

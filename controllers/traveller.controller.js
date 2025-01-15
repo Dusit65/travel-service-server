@@ -1,6 +1,6 @@
-//ไฟล์ที่เขียนการควบคุมการทำงานกับตารางในฐานข้อมูล
+//File that writes control operations for a table in the database
 //เช่น insert, update, delete, select
-//ไฟล์นี้ทำงานกับ traveller_tb\
+//This file works with traveller_tb\
 const Traveller = require("./../models/traveller.model.js")
 
 //fuction insert data to traveller_tb ====================================================

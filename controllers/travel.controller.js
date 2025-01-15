@@ -1,13 +1,13 @@
-//ไฟล์ที่เขียนการควบคุมการทำงานกับตารางในฐานข้อมูล
+//File that writes control operations for a table in the database
 //เช่น insert, update, delete, select
-//ไฟล์นี้ทำงานกับ travel_tb
+//This file works with travel_tb
 
-const Traveller = require("./../models/travel.model.js")
+const Travel = require("./../models/travel.model.js")
 
 //fuction insert data to travel_tb ====================================================
 exports.createTravel = async (req, res) =>{
     try{
-        const result = await Traveller.create(req.body);
+        const result = await Travel.create(req.body);
         res.status(201).json({
             message:"Travel created successfully",
             data: result
@@ -48,7 +48,7 @@ exports.getAllTravel = async (req, res) => {
 //func edit travel in travel_tb ====================================================
 exports.editTravel = async (req, res) => {
     try{
-        const result = await Traveller.update(req.body, {
+        const result = await Travel.update(req.body, {
             where: {
                 travelId: req.params.travelId
             }
@@ -69,7 +69,7 @@ exports.editTravel = async (req, res) => {
 /*************  ✨ Codeium Command ⭐  *************/
 exports.deleteTravel = async (req, res) => {
     try{
-        const result = await Traveller.destroy({
+        const result = await Travel.destroy({
             where: {
                 travelId: req.params.travelId
             }
