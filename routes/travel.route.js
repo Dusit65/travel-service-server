@@ -8,7 +8,7 @@ const router = express.Router();
 
 //Routing is based on RESTful API principles
 //GET = ค้นหา ตรวจสอบ ดึง ดู, POST = เพิ่ม, PUT = แก้ไข, DELETE = ลบ
-router.post("/", travelCtrl.createTravel);
+router.post("/", travelCtrl.uploadTravel, travelCtrl.createTravel);
 router.get("/:travellerId", travelCtrl.getAllTravel);
 router.put("/:travelId", travelCtrl.editTravel);
 router.delete("/:travelId", travelCtrl.deleteTravel);
