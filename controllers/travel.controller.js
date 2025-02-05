@@ -5,6 +5,7 @@
 const Travel = require("./../models/travel.model.js");
 const path = require("path");
 const multer = require("multer");
+const fs = require("fs");
 
 //fuction insert data to travel_tb ====================================================
 exports.createTravel = async (req, res) => {
@@ -57,7 +58,26 @@ exports.getAllTravel = async (req, res) => {
 //func edit travel in travel_tb ====================================================
 exports.editTravel = async (req, res) => {
   try {
-    const result = await Travel.update(req.body, {
+    let data = {
+      ...req.body,
+    };
+    if (req.file) { //ค้นหาเพื่อเอารูป
+      const travel = await Travel.findOne({
+        where: {
+          travelId: req.params.travelId,
+        },
+      });
+
+      if (travel.travelImage) {
+        //ตรวจสอบกรณีที่มีรูป
+        const oldImagePath = "images/travel/" + travel.travelImage; //ลบไฟล์เก่าทิ้ง
+        fs.unlink(oldImagePath,(err) => {console.log(err)});
+      }
+      data.travelImage = req.file.path.replace("images\\travel\\", "");
+    }else{
+        delete data.travelImage
+    }
+    const result = await Travel.update(data, {
       where: {
         travelId: req.params.travelId,
       },
@@ -78,6 +98,19 @@ exports.editTravel = async (req, res) => {
 /*************  ✨ Codeium Command ⭐  *************/
 exports.deleteTravel = async (req, res) => {
   try {
+    
+    //ค้นหาเพื่อเอารูป
+      const travel = await Travel.findOne({
+        where: {
+          travelId: req.params.travelId,
+        },
+      });
+
+      if (travel.travelImage) {
+        //ตรวจสอบกรณีที่มีรูป
+        const oldImagePath = "images/travel/" + travel.travelImage; //ลบไฟล์เก่าทิ้ง
+        fs.unlink(oldImagePath,(err) => {console.log(err)});
+    }
     const result = await Travel.destroy({
       where: {
         travelId: req.params.travelId,
