@@ -15,7 +15,7 @@ exports.createTravel = async (req, res) => {
       ...req.body,
       //เช็คว่ามีไฟล์รูปภาพหรือไม่
       travelImage: req.file
-        ? req.file.path.replace("images\travel\", ") 
+        ? req.file.path.replace("images\travel\", ") //Fix Here!!!!!!!!!!!!!!!!!!!!!!!!!!!
         : "",
     };
 
