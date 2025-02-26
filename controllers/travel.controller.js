@@ -13,14 +13,10 @@ exports.createTravel = async (req, res) => {
     //ตัวแปร
     let data = {
       ...req.body,
-<<<<<<< HEAD
       //เช็คว่ามีไฟล์รูปภาพหรือไม่
       travelImage: req.file
         ? req.file.path.replace("images\\travel\\", "")
         : "",
-=======
-      travelImage: req.file ? req.file.path.replace("images/travel\\", "") : "",
->>>>>>> 1608ed44b9c00096e3341d2a11015010b294cb8f
     };
 
     const result = await Travel.create(data);
