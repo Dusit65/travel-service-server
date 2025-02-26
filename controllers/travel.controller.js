@@ -13,10 +13,7 @@ exports.createTravel = async (req, res) => {
     //ตัวแปร
     let data = {
       ...req.body,
-      //เช็คว่ามีไฟล์รูปภาพหรือไม่
-      travelImage: req.file
-        ? req.file.path.replace("images\travel\", ") 
-        : "",
+      travelImage: req.file ? req.file.path.replace("images/travel\\", "") : "",
     };
 
     const result = await Travel.create(data);
@@ -76,7 +73,7 @@ exports.editTravel = async (req, res) => {
         const oldImagePath = "images/travel/" + travel.travelImage; //ลบไฟล์เก่าทิ้ง
         fs.unlink(oldImagePath,(err) => {console.log(err)});
       }
-      data.travelImage = req.file.path.replace("images\\travel\\", "");
+      data.travelImage = req.file.path.replace("", "");
     }else{
         delete data.travelImage
     }
@@ -133,12 +130,12 @@ exports.deleteTravel = async (req, res) => {
 //Travel Image upload function================================================
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, "images/travel");
+    cb(null, "images/travel"); // โฟลเดอร์ปลายทางถูกต้อง
   },
   filename: function (req, file, cb) {
     cb(
       null,
-      "travel_" +
+      "travel_" + // เปลี่ยนให้แน่ใจว่าขึ้นต้นด้วย "travel_"
         Math.floor(Math.random() * Date.now()) +
         path.extname(file.originalname)
     );
