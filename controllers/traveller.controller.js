@@ -26,10 +26,12 @@ exports.createTraveller = async (req, res) => {
       ...req.body,
       //เช็คว่ามีไฟล์รูปภาพหรือไม่
       travellerImage: req.file
-        ? req.file.path.replace("images\traveller\", ")
+        ? req.file.path.replace("images\\traveller\\", "")
         : "",
     };
+
     const result = await Traveller.create(data);
+
     res.status(201).json({
       message: "Traveller created successfully",
       data: result,

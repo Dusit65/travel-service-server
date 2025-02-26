@@ -15,7 +15,7 @@ exports.createTravel = async (req, res) => {
       ...req.body,
       //เช็คว่ามีไฟล์รูปภาพหรือไม่
       travelImage: req.file
-        ? req.file.path.replace("images\travel\", ") //Fix Here!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        ? req.file.path.replace("images\\travel\\", "")
         : "",
     };
 
@@ -159,3 +159,4 @@ exports.uploadTravel = multer({
     cb("Error: Images Only!");
   },
 }).single("travelImage");
+
