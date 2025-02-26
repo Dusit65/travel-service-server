@@ -12,8 +12,11 @@ const PORT = process.env.PORT || 3000;
 //use middleware to จัดการต่าง
 app.use(bodyParser.json());//adjust json data
 app.use(cors());//allow access from any domain
+
 app.use("/traveller", travellerRoute); //use router module
 app.use("/travel", travelRoute);
+app.use("/images/traveller", express.static("images/traveller"));
+app.use("/images/travel", express.static("images/travel"));
 
 //test call web server
 app.get("/", (req, res) => {
