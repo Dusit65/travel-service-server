@@ -10,6 +10,7 @@ const router = express.Router();
 //GET = ค้นหา ตรวจสอบ ดึง ดู, POST = เพิ่ม, PUT = แก้ไข, DELETE = ลบ
 router.post("/", travelCtrl.uploadTravel, travelCtrl.createTravel);
 router.get("/:travellerId", travelCtrl.getAllTravel);
+router.get("/one/:travelId", travelCtrl.getTravel); //get selected travel
 router.put("/:travelId", travelCtrl.uploadTravel, travelCtrl.editTravel);
 router.delete("/:travelId", travelCtrl.deleteTravel);
 
